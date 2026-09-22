@@ -1,0 +1,29 @@
+{
+  "name": "WhatsApp LegalTech Bot",
+  "nodes": [
+    {
+      "name": "WhatsApp Trigger",
+      "type": "n8n-nodes-base.whatsappTrigger"
+    },
+    {
+      "name": "Transcribe Voice Note",
+      "type": "n8n-nodes-base.executeCommand",
+      "notes": "If voice -> Whisper"
+    },
+    {
+      "name": "AI Agent - Legal Assistant",
+      "type": "n8n-nodes-base.openAi",
+      "notes": "System prompt for despacho"
+    },
+    {
+      "name": "Check Calendar",
+      "type": "n8n-nodes-base.googleCalendar",
+      "notes": "Verifica disponibilidad abogado"
+    },
+    {
+      "name": "Reply WhatsApp",
+      "type": "n8n-nodes-base.whatsapp",
+      "notes": "Envia respuesta + agenda"
+    }
+  ]
+}
