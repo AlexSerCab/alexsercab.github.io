@@ -1,0 +1,30 @@
+{
+  "name": "Audiencia Transcription Automation",
+  "nodes": [
+    {
+      "name": "Watch Folder",
+      "type": "n8n-nodes-base.localFileTrigger",
+      "notes": "Monitorea /audiencias/nuevas"
+    },
+    {
+      "name": "Transcribe with Whisper",
+      "type": "n8n-nodes-base.executeCommand",
+      "notes": "python transcription_local.py {{$binary}}"
+    },
+    {
+      "name": "Summarize with OpenAI",
+      "type": "n8n-nodes-base.openAi",
+      "notes": "Resumen + puntos clave de la audiencia"
+    },
+    {
+      "name": "Save to Drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "notes": "Guarda txt en Documentos Personales/CV/Transcripciones"
+    },
+    {
+      "name": "Notify Judge/Secretary",
+      "type": "n8n-nodes-base.emailSend",
+      "notes": "Email con transcripcion lista"
+    }
+  ]
+}
